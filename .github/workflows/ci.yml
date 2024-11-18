@@ -36,3 +36,13 @@ jobs:
         with:
           name: debug-apk
           path: build/app/outputs/apk/debug/*.apk
+  download:
+    name: Download
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download APK artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: debug-apk
+          path: ./downloaded-artifacts
