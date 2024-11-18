@@ -31,9 +31,8 @@ jobs:
       - run: flutter pub get
       - run: flutter --version
       - run: flutter build apk --debug --split-per-abi
-      - name: push to release
-        uses: ncipollo/release-action@v1.8.10
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v2
         with:
-          artifacts: "build/app/outputs/apk/debug/*.apk"
-          tag: v0.0.${{ github.run_number }}
-          token: ${{ secrets.TOKEN }}
+          name: debug-apk
+          path: build/app/outputs/apk/debug/*.apk
